@@ -197,7 +197,7 @@ This defines how much resources one container gets. If the total resources reque
 
 You need to keep in mind that the `size` key only has impact on your production environment. The key will be ignored in the development environment and will be set to `S`. If you need to increase this you can do it on you plan settings page for a fee.
 
-### Disc space
+### Disk space
 
 Another thing you can configure is the disk space of each application and service. You can also configure this in [.platform.app.yaml](https://github.com/shopwareLabs/AppTemplate/blob/master/.platform.app.yaml#L40) and [services.yaml](https://github.com/shopwareLabs/AppTemplate/blob/master/.platform/services.yaml).
 

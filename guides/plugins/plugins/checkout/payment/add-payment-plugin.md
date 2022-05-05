@@ -99,7 +99,7 @@ class ExamplePayment implements SynchronousPaymentHandlerInterface
     public function pay(SyncPaymentTransactionStruct $transaction, RequestDataBag $dataBag, SalesChannelContext $salesChannelContext): void
     {
         $context = $salesChannelContext->getContext();
-        $this->transactionStateHandler->paid($transaction->getOrderTransaction()->getId(), $context);
+        $this->transactionStateHandler->paid($transaction->getOrderTransaction()->getId(), $salesChannelContext);
     }
 }
 ```
@@ -179,10 +179,10 @@ class ExamplePayment implements AsynchronousPaymentHandlerInterface
         $context = $salesChannelContext->getContext();
         if ($paymentState === 'completed') {
             // Payment completed, set transaction status to "paid"
-            $this->transactionStateHandler->paid($transaction->getOrderTransaction()->getId(), $context);
+            $this->transactionStateHandler->paid($transaction->getOrderTransaction()->getId(), $salesChannelContext);
         } else {
             // Payment not completed, set transaction status to "open"
-            $this->transactionStateHandler->reopen($transaction->getOrderTransaction()->getId(), $context);
+            $this->transactionStateHandler->reopen($transaction->getOrderTransaction()->getId(), $salesChannelContext);
         }
     }
 
